@@ -15,7 +15,7 @@ class CreatePlantVariantsTable extends Migration
     {
         Schema::create('plant_variants', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('plant_id');
+            $table->integer('plant_id')->unsigned();
             $table->string('plant_variant_name');
             $table->text('plant_variant_description');
             $table->text('plant_variant_growth_description');

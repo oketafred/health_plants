@@ -11,7 +11,7 @@ use App\Plant;
 use Validator;
 use Session;
 use Image;
-// use Excel;
+use App\PlantVariant;
 
 class PlantController extends Controller
 {
@@ -80,6 +80,16 @@ class PlantController extends Controller
 		Session::flash('success', 'A New Plant Added Successful.');
 
 		return redirect()->route('plants.index');
+
+	}
+
+
+	public function plantVariant($id){
+
+		$plant = Plant::where('id', $id)->first();
+
+
+		return view('admin.plants.plant_variants', compact('plant'));
 
 	}
 }

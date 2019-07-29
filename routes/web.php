@@ -35,6 +35,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
 	Route::get('add_plant', 'PlantController@create')->name('plants.create');
 	Route::post('add_plant', 'PlantController@store')->name('plants.store');
 
+	Route::get('plant/{id}', 'PlantController@plantVariant')->name('plants.variants');
 
 	Route::get('plant_variants', 'PlantVariantController@index')->name('variants.index');
 

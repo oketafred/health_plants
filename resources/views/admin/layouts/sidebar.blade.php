@@ -28,14 +28,14 @@
         </a>
         <ul class="treeview-menu">
           <li class="@if(Request::is('admin/add_plant')) active  @endif"><a href="{{ route('plants.create') }}"><i class="fa fa-circle-o"></i> Add Plants</a></li>
-          <li class="@if(Request::is('admin/view_plants') || Request::is('admin/view_plants')) active  @endif"><a href="{{ route('plants.index') }}"><i class="fa fa-circle-o"></i> View Plants</a></li>
+          <li class="@if(Request::is('admin/view_plants') || Request::is('admin/view_plants')) active  @endif"><a href="{{ route('plants.index') }}"><i class="fa fa-circle-o"></i> View All Plants</a></li>
         </ul>
       </li>
       
       <li class="@if(Request::is('admin/plant_variants')) active  @endif">
         <a href="{{ route('variants.index') }}">
           <i class="fa fa-leaf"></i>
-          <span>Plant Variant</span>
+          <span>All Plant Variants</span>
         </a>
       </li>  
 

@@ -34,18 +34,20 @@
         </div>
       </a>
       <!-- /.col -->
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
-          <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+      <a href="{{ route('variants.index') }}">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="fa fa-leaf"></i></span>
 
-          <div class="info-box-content">
-            <span class="info-box-text">Plant Variants</span>
-            <span class="info-box-number">41,410</span>
+            <div class="info-box-content">
+              <span class="info-box-text">Plant Variants</span>
+              <span class="info-box-number">{{ $plant_variants_count }}</span>
+            </div>
+            <!-- /.info-box-content -->
           </div>
-          <!-- /.info-box-content -->
+          <!-- /.info-box -->
         </div>
-        <!-- /.info-box -->
-      </div>
+      </a>
       <!-- /.col -->
 
       <!-- fix for small devices only -->

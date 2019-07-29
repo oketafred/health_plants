@@ -1,13 +1,13 @@
 @extends('admin.master')
 
-@section('title', 'List of Plants')
+@section('title', 'Plant with Variants List')
 
 @section('content')
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
-			<i class="fa fa-list"></i> List of Plant Variants
+			<i class="fa fa-leaf"></i> Plant Name: {{ $plant->plant_name }}
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="{{ route('admin_dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -21,6 +21,14 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="box box-success">
+					<div class="box-header with-border">
+						<h3 class="box-title">
+							<a href="{{-- {{ route('plants.create') }} --}}" class="btn btn-success"><i class="fa fa-plus"></i> Add New Plant Variant</a>
+						</h3>
+						<div class="box-tools">
+							<a href="{{-- {{ route('plants.export') }} --}}" class="btn btn-danger"><i class="fa fa-plus-circle"></i> Import from Excel</a>
+						</div>
+					</div>
 					<div class="box-body">
 						<div class="row">
 							<div class="col-md-12">
@@ -38,7 +46,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										@forelse($plant_variants as $plant_variant)
+										@forelse($plant->plant_variants as $plant_variant)
 										<tr>
 											<td>{{ $plant_variant->id }}</td>
 											<td>{{ $plant_variant->plant_variant_name }}</td>

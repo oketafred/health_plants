@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Plant;
+use App\PlantVariant;
 
 class AdminController extends Controller
 {
@@ -11,6 +12,8 @@ class AdminController extends Controller
 
 		$plant_count = Plant::count();
 
-		return view('admin.admin_dashboard', compact('plant_count'));
+		$plant_variants_count = PlantVariant::count();
+
+		return view('admin.admin_dashboard', compact('plant_count', 'plant_variants_count'));
 	}
 }

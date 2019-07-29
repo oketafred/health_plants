@@ -58,7 +58,7 @@
 											<td><img height="50px" src="{{ asset('plant_photos/' . $plant->plant_photo) }}"></td>
 											<td>{{ $plant->created_at->diffForHumans() }}</td>
 											<td><a href="#" class="btn btn-danger btn-sm">Edit</a></td>
-											<td><a href="#" class="btn btn-primary btn-sm">Details</a></td>
+											<td><a href="{{ route('plants.variants', $plant->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-leaf"></i> Plant Variants</a></td>
 										</tr>
 										@empty
 
