@@ -14,7 +14,7 @@
 			Plants
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+			<li><a href="{{ route('admin_dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
 			<li class="active">Add a New Plant</li>
 		</ol>
 	</section>
@@ -26,7 +26,14 @@
 			<div class="col-md-12">
 				<div class="box">
 					<div class="box-header with-border">
-						<h3 class="box-title"><i class="fa fa-plus"></i> Add a New Plant</h3>
+						<h3 class="box-title">
+							<a href="{{ route('plants.index') }}" class="btn btn-success"><i class="fa fa-list"></i>  List of Plants</a>
+						</h3>
+						<div class="box-tools">
+							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-default">
+								<i class="fa fa-plus-circle"></i> Import from Excel
+							</button>
+						</div>
 					</div>
 					<!-- /.box-header -->
 					<div class="box-body">
@@ -81,12 +88,41 @@
 </div>
 <!-- /.content-wrapper -->
 
-@endsection
 
-@section('scripts')
-<script src="{{ asset('assets/summernote/summernote.js') }}"></script>
-<script>
-	$(document).ready(function() {
+<!--Modal-->
+<div class="modal fade" id="modal-default">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Import an Excel File</h4>
+				</div>
+				<form action="{{ route('plants.import') }}" method="POST" enctype="multipart/form-data">
+
+					{{ csrf_field() }}
+
+					<div class="modal-body">
+						<label for="excel_file">Add Excel File</label>
+						<input type="file" name="excel_file" class="form-control">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Save changes</button>
+					</div>
+				</form>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+
+	@endsection
+
+	@section('scripts')
+	<script src="{{ asset('assets/summernote/summernote.js') }}"></script>
+	<script>
+		$(document).ready(function() {
 
         // Loading Summernote
         $('#summernote1').summernote({

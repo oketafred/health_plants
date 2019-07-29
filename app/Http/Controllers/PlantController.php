@@ -3,14 +3,43 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Imports\PlantsImport;
+use App\Exports\PlantsExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
+use App\Plant;
 use Validator;
+use Session;
+use Image;
+// use Excel;
 
 class PlantController extends Controller
 {
+
+	public function export() 
+	{
+		return Excel::download(new PlantsExport, 'plants.xlsx');
+	}
+
+	public function import(Request $request) 
+	{
+		Excel::import(new PlantsImport, request()->file('excel_file'));
+
+		Session::flash('success', 'Import from Excel Successful');
+		
+		return redirect()->back();
+	}
+
 	public function create (){
 
 		return view('admin.plants.create');
 
+	}
+
+	public function index (){
+		$plants = Plant::orderBy('id', 'DESC')->get();
+
+		return view('admin.plants.index', compact('plants'));
 	}
 
 	public function store(Request $request) {
@@ -29,36 +58,28 @@ class PlantController extends Controller
 			return redirect()->back();
 		}
 
-		$image= $request->file('photo');
+		$image= $request->file('plant_photo');
 
 		$filename = time(). '.' .$image->getClientOriginalExtension();
-		$location = public_path('clinican_photos/' . $filename);
+		$location = public_path('plant_photos/' . $filename);
 		Image::make($image)->resize(800, 400)->save($location);
-		$clinican_photo = $filename;
+		$plant_photo = $filename;
 
-		$credentials = [
-			'email'    => $request->email,
-			'first_name' => $request->first_name,
-			'last_name' => $request->last_name,
-			'password' => $request->password,
-			'address' => $request->address,
-			'telephone_number' => $request->telephone_number,
-			'health_facility_id' => $request->health_facility_id,
-			'specialist' => $request->specialist,
-			'photo' => $clinican_photo,
-			'gender' => $request->gender,
-			'biography' => $request->biography
-		];
+		$plant = new Plant;
 
-		$user = Sentinel::registerAndActivate($credentials);
+		$plant->plant_name = $request->plant_name;
+		$plant->latin_name = $request->latin_name;
+		$plant->plant_photo = $filename;
+		$plant->description = $request->plant_description;
+		$plant->growth_condition = $request->plant_growth_description;
 
-		$role = Sentinel::findRoleBySlug("clinican");
+		// dd($plant);
 
-		$role->users()->attach($user);
+		$plant->save();
 
-		Session::flash('success', 'A New Clinican Added Successful.');
+		Session::flash('success', 'A New Plant Added Successful.');
 
-		return redirect()->route('clinican_lists');
+		return redirect()->route('plants.index');
 
 	}
 }

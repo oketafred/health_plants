@@ -28,14 +28,21 @@ Route::post('logout', 'AccountController@logout')->name('logout');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
 	
-	Route::get('dashboard', function(){
-		return view('admin.admin_dashboard');
-	})->name('admin_dashboard');
+	Route::get('dashboard', 'AdminController@admin')->name('admin_dashboard');
 	
-	Route::get('view_plants', function(){
-		return view('admin.plants.index');
-	})->name('plants.index');
+	Route::get('view_plants', 'PlantController@index')->name('plants.index');
 	
 	Route::get('add_plant', 'PlantController@create')->name('plants.create');
 	Route::post('add_plant', 'PlantController@store')->name('plants.store');
+
+
+	Route::get('plant_variants', 'PlantVariantController@index')->name('variants.index');
+
+	Route::get('plants/export', 'PlantController@export')->name('plants.export');
+
+	Route::post('plants/import', 'PlantController@import')->name('plants.import');
+
+	Route::get('my_profile', 'PasswordController@my_profile')->name('my_profile');
+
+	Route::post('resetpassword', 'PasswordController@update')->name('reset.password');
 });

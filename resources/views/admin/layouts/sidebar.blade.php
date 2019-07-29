@@ -7,18 +7,18 @@
         <img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p>Alexander Pierce</p>
+        <p>{{ Sentinel::getUser()->last_name }} {{ Sentinel::getUser()->first_name }}</p>
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
     </div>
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
-      <li class="active treeview menu-open">
-        <a href="#">
+      <li class="@if(Request::is('admin/dashboard')) active  @endif">
+        <a href="{{ route('admin_dashboard') }}">
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
         </a>
       </li>
-      <li class="treeview">
+      <li class="treeview @if(Request::is('admin/add_plant') || Request::is('admin/view_plants')) active  @endif">
         <a href="#">
           <i class="fa fa-tree"></i>
           <span>Plants</span>
@@ -27,10 +27,18 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="{{ route('plants.create') }}"><i class="fa fa-circle-o"></i> Add Plants</a></li>
-          <li><a href="{{ route('plants.index') }}"><i class="fa fa-circle-o"></i> View Plants</a></li>
+          <li class="@if(Request::is('admin/add_plant')) active  @endif"><a href="{{ route('plants.create') }}"><i class="fa fa-circle-o"></i> Add Plants</a></li>
+          <li class="@if(Request::is('admin/view_plants') || Request::is('admin/view_plants')) active  @endif"><a href="{{ route('plants.index') }}"><i class="fa fa-circle-o"></i> View Plants</a></li>
         </ul>
       </li>
+      
+      <li class="@if(Request::is('admin/plant_variants')) active  @endif">
+        <a href="{{ route('variants.index') }}">
+          <i class="fa fa-leaf"></i>
+          <span>Plant Variant</span>
+        </a>
+      </li>  
+
       <li class="treeview">
         <a href="#">
           <i class="fa fa-files-o"></i>
@@ -69,12 +77,9 @@
           <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
         </ul>
       </li>
-      <li>
-        <a href="#">
+      <li class="@if(Request::is('admin/my_profile')) active  @endif">
+        <a href="{{ route('my_profile') }}">
           <i class="fa fa-user-circle"></i> <span>My Profile</span>
-          <span class="pull-right-container">
-            <small class="label pull-right bg-green">new</small>
-          </span>
         </a>
       </li>
     </ul>

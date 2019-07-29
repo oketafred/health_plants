@@ -28,7 +28,7 @@ class AccountController extends Controller
 
 			if ($validator->fails()) {
 
-				Session::flash('error', 'All Fields are Required!');
+				Session::flash('error', 'Email and Password are Required!');
 
 				return redirect()->back();
 			}
@@ -48,6 +48,7 @@ class AccountController extends Controller
 			}
 
 		}catch(ThrottlingException $ex){
+			
 			$delay = $ex->getDelay()/60;
 
 			Session::flash('error', "You have been locked out. For $delay");

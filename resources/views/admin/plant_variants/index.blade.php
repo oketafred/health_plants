@@ -7,7 +7,7 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
-			<i class="fa fa-list"></i> List of Plants
+			<i class="fa fa-list"></i> List of Plant Variants
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="{{ route('admin_dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -20,16 +20,7 @@
 		<!-- Info boxes -->
 		<div class="row">
 			<div class="col-md-12">
-				<div class="box box-success ">
-					<div class="box-header with-border">
-						<h3 class="box-title">
-							<a href="{{ route('plants.create') }}" class="btn btn-success"><i class="fa fa-plus"></i> Add New Plant</a>
-						</h3>
-						<div class="box-tools">
-							<a href="{{ route('plants.export') }}" class="btn btn-danger"><i class="fa fa-download"></i> Download in Excel</a>
-						</div>
-					</div>
-					<!-- /.box-header -->
+				<div class="box box-success">
 					<div class="box-body">
 						<div class="row">
 							<div class="col-md-12">
@@ -48,21 +39,17 @@
 										</tr>
 									</thead>
 									<tbody>
-										@forelse($plants as $plant)
 										<tr>
-											<td>{{ $plant->id }}</td>
-											<td>{{ $plant->plant_name }}</td>
-											<td>{{ $plant->latin_name }}</td>
-											<td>{!! substr($plant->description, 0, 180) !!}</td>
-											<td>{!! $plant->growth_condition !!}</td>
-											<td><img height="50px" src="{{ asset('plant_photos/' . $plant->plant_photo) }}"></td>
-											<td>{{ $plant->created_at->diffForHumans() }}</td>
+											<td>1</td>
+											<td>Muringa</td>
+											<td>Moringa</td>
+											<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugit corporis ratione suscipit dolor saepe ex. Architecto recusandae quo, corrupti maxime aliquid ipsam culpa rem voluptas alias asperiores at, expedita.</td>
+											<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident dolores sunt, soluta ab. Vitae quo veniam facere minima, quas beatae. Eveniet reprehenderit odit, voluptatem officia nam rerum sequi, eius. Nam.</td>
+											<td><img height="50px" src="#"></td>
+											<td>12767678</td>
 											<td><a href="#" class="btn btn-danger btn-sm">Edit</a></td>
 											<td><a href="#" class="btn btn-primary btn-sm">Details</a></td>
 										</tr>
-										@empty
-
-										@endif
 									</tbody>
 								</table>
 							</div>

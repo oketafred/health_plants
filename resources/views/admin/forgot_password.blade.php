@@ -48,7 +48,7 @@
         </div>
       </form>
       <br>
-      <a href="{{ route('login') }}"><i class="fa fa-backward"></i> Back to Login Page</a><br>
+      <a href="/admin"><i class="fa fa-backward"></i> Back to Login Page</a><br>
       
     </div>
     <!-- /.login-box-body -->
