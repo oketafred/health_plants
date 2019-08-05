@@ -9,6 +9,8 @@
   <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
   <link rel="stylesheet" href="{{ asset('assets/front/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/front/css/style.css') }}">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="main.js"></script>
 </head>
 
@@ -37,12 +39,33 @@
       </header>
 
 
-      <section class="mt-3 h-100">
+      <section class="mt-3">
         <div class="container">
           <div class="row">
             <div class="col-md-10 offset-md-1">
-
+              @forelse($search_results as $search_result)
+              <div class="media">
+                <img src="assets/front/img/Mossquito.jpg" height="64" width="64" class="mr-3" alt="...">
+                <div class="media-body">
+                  <h5 class="mt-0">
+                    <a href="#"> {{ $search_result->disease_name }} </a>
+                  </h5>
+                  {{ $search_result->disease_description }}
+                </div>
+              </div>
+              @empty
+              <div class="media">
+                <div class="media-body">
+                  <h5 class="text-center">
+                    <div class="alert alert-danger" role="alert">
+                      <i class="fa fa-info-circle fa-2x m-2"></i> <br>
+                      No Search Result Found for - {{ $searchTerm }}
+                    </div>
+                  </h5>
+                </div>
+              </div>
             </div>
+            @endforelse
           </div>
         </div>
       </section>

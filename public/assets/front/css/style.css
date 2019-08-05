@@ -1,0 +1,54 @@
+.buttonContainer{
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+}
+    
+.button{
+    width: 70%;
+    height: 1%;
+    display: block;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(229, 255, 0, 0.5);
+    margin-bottom: 1.5%;
+    padding: 2%;
+    text-align: center;
+    font-size: 20px;
+    color: rgb(14, 68, 1);
+    font-weight: bold;
+}
+
+h2{
+    text-align: center;
+    padding: 50px;
+    color: #ffffff;
+    font-size: 2.5em;
+}
+
+body{
+   
+    background-image: url(../img/chia.jpg);
+    background-size: cover;
+}
+
+h1{
+    color: rgb(229, 255, 0);
+    font-size: 1.5em;
+}
+
+#customer{
+    background: none;
+    background-image: url(../img/chia.jpg);
+    padding-top: 50px;
+}
+
+
+/* Horizontal Line */
+.media {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+}
