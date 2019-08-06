@@ -13,4 +13,10 @@ class PlantVariant extends Model
 
 	}
 
+	public function disease_plant_variant() {
+
+		return $this->hasMany(DiseasePlantVariant::class);
+
+	}
+
 }

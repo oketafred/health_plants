@@ -13,6 +13,7 @@
 
 Route::get('/', 'DiseaseController@index')->name('disease.index');
 Route::post('/', 'DiseaseController@query')->name('disease.query');
+Route::get('details/{id}', 'DiseaseController@details')->name('details');
 
 Route::group(['middleware' => 'visitors'], function(){
 	Route::get('admin', 'AccountController@getLogin')->name('login');

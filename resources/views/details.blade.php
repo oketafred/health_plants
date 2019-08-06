@@ -43,29 +43,53 @@
         <div class="container">
           <div class="row">
             <div class="col-md-10 offset-md-1">
-              @forelse($search_results as $search_result)
               <div class="media">
-                <img src="assets/front/img/Mossquito.jpg" height="64" width="64" class="mr-3" alt="...">
                 <div class="media-body">
                   <h5 class="mt-0">
-                    <a href="{{ route('details', $search_result->id) }}"> {{ $search_result->disease_name }} </a>
+                    <a> {{ $disease->disease_name }} </a>
                   </h5>
-                  {{ $search_result->disease_description }}
+                  {{ $disease->disease_description }}
                 </div>
+
               </div>
-              @empty
+
               <div class="media">
                 <div class="media-body">
-                  <h5 class="text-center">
-                    <div class="alert alert-danger" role="alert">
-                      <i class="fa fa-info-circle fa-2x m-2"></i> <br>
-                      No Search Result Found for - {{ $searchTerm }}
-                    </div>
+                  <h5 class="mt-0">
+                    <a> {{ $disease_category->disease_category_name }} </a>
                   </h5>
+                  {{ $disease_category->description }}
                 </div>
               </div>
+
+              <div class="media">
+                <div class="media-body">
+                  <h5 class="mt-0">
+                    <a> {{ $plant->plant_name }} </a>
+                  </h5>
+                  {{ $plant->description }}
+                </div>
+              </div>
+
+              <div class="media">
+                <div class="media-body">
+                  <h5 class="mt-0">
+                    <a> {{ $plant_variant->plant_variant_name}} </a>
+                  </h5>
+                  {{ $plant_variant->plant_variant_description}}
+                </div>
+              </div>
+
+              {{-- <div class="media">
+                <div class="media-body">
+                  <h5 class="mt-0">
+                    <a> Preparation </a>
+                  </h5>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus molestiae necessitatibus atque, animi tenetur, sed unde esse aliquam delectus dolore quibusdam impedit dicta expedita laboriosam soluta iusto magni aut inventore?
+                </div>
+              </div> --}}
+
             </div>
-            @endforelse
           </div>
         </div>
       </section>
